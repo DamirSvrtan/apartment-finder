@@ -1,7 +1,7 @@
 class Apartment
   include MongoMapper::Document
 
-  key :name, String
+  key :name,        String
   key :njuskalo_id, Integer
-  key :link, String
+  key :link,        String
 end
