@@ -6,13 +6,11 @@ class NewApartmentSaver
   end
 
   def call
+    new_apartments.each { |new_apartment| new_apartment.save! }
+
+    return if new_apartments.count > 10 # Probably the initialization process
+
     new_apartments.each do |new_apartment|
-      new_apartment.save!
-
-      return if new_apartments.count == apartments.count # initialization
-
-      puts 1
-
       NewApartmentMailer.sendout(
         apartment: new_apartment,
         recipients: MySettings.recipients,
